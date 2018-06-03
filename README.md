@@ -9,7 +9,8 @@ https://time-clock-service.herokuapp.com/api/employees/{id}
 Content-Type: application/json
 ```json
 {
-  "fingerprintId": "fingerprint"
+  "fingerprintId": "fingerprint",
+  "pin": "1234"
 }
 ```
 
