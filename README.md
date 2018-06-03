@@ -9,6 +9,10 @@ Content-Type: application/json
 }
 ```
 
+#### To get all companies:
+###### Request Type: GET
+https://time-clock-service.herokuapp.com/api/companies
+
 #### To create employee:
 ###### Request Type: POST
 https://time-clock-service.herokuapp.com/api/employees
