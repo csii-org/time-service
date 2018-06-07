@@ -67,5 +67,15 @@ Content-Type: application/json
 ###### Request Type: DELETE
 https://time-clock-service.herokuapp.com/api/employees/{id}
 
+#### Employee Time-in
+###### Request Type: POST
+Content-Type: application/json
+```json
+{
+  "empId": "{employee id}",
+  "time": "{unix timestamp}"
+}
+```
+
 
 
