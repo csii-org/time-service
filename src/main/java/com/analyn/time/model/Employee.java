@@ -3,14 +3,13 @@ package com.analyn.time.model;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Data
 @Entity
+@EqualsAndHashCode(exclude = "employeeTimes")
 public class Employee {
 
     private @Id int id;
@@ -22,6 +21,9 @@ public class Employee {
     @ManyToOne
     @JoinColumn(name = "company_id")
     private Company company;
+
+    @OneToMany(mappedBy = "employee")
+    private List<EmployeeTime> employeeTimes;
 
     private Employee() {}
 

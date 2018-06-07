@@ -13,6 +13,11 @@ Content-Type: application/json
 ###### Request Type: GET
 https://time-clock-service.herokuapp.com/api/companies
 
+#### To search company by name:
+###### Request Type: GET
+https://time-clock-service.herokuapp.com/api/companies/search/findByName?name={companyName}
+
+
 #### To create employee:
 ###### Request Type: POST
 https://time-clock-service.herokuapp.com/api/employees
@@ -36,6 +41,11 @@ Content-Type: text/uri-list
 ```
 http://time-clock-service.herokuapp.com/api/companies/{companyId}
 ```
+
+#### To get all employees of the company:
+###### Request Type: GET
+https://time-clock-service.herokuapp.com/api/companies/{companyId}/employees
+
 
 #### To search employee by name:
 ###### Request Type: GET
