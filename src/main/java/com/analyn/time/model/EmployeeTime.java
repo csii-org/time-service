@@ -4,7 +4,6 @@ import lombok.Data;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
-import java.util.Date;
 
 @Data
 @Entity
@@ -16,8 +15,8 @@ public class EmployeeTime {
     private Double overtime;
     private Double undertime;
     private Boolean isAbsent;
-    private Date createdDate;
-    private Date updatedDate;
+    private LocalDateTime createdDate;
+    private LocalDateTime updatedDate;
 
     @ManyToOne
     @JoinColumn(name = "employee_id")
@@ -25,7 +24,7 @@ public class EmployeeTime {
 
     public EmployeeTime() {}
 
-    private EmployeeTime(int id, LocalDateTime timeIn, LocalDateTime timeOut, Double overtime, Double undertime, Boolean isAbsent, Date createdDate, Date updatedDate, Employee employee) {
+    private EmployeeTime(int id, LocalDateTime timeIn, LocalDateTime timeOut, Double overtime, Double undertime, Boolean isAbsent, LocalDateTime createdDate, LocalDateTime updatedDate, Employee employee) {
         this.id = id;
         this.timeIn = timeIn;
         this.timeOut = timeOut;

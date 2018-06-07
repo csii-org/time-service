@@ -72,8 +72,7 @@ https://time-clock-service.herokuapp.com/api/employees/{id}
 Content-Type: application/json
 ```json
 {
-  "empId": "{employee id}",
-  "time": "{unix timestamp}"
+  "empId": "{employee id}"
 }
 ```
 
