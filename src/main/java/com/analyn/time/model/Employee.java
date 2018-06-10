@@ -4,7 +4,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 import javax.persistence.*;
-import java.util.Date;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Data
@@ -16,18 +16,18 @@ public class Employee {
     private String fullName;
     private String fingerprintId;
     private String pin;
-    private Date createdDate;
+    private LocalDateTime createdDate = LocalDateTime.now();
 
     @ManyToOne
     @JoinColumn(name = "company_id")
     private Company company;
 
-    @OneToMany(mappedBy = "employee")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "employee")
     private List<EmployeeTime> employeeTimes;
 
     private Employee() {}
 
-    private Employee(int id, String fullName, String fingerprintId, String pin, Date createdDate, Company company) {
+    private Employee(int id, String fullName, String fingerprintId, String pin, LocalDateTime createdDate, Company company) {
         this.id = id;
         this.fullName = fullName;
         this.fingerprintId = fingerprintId;

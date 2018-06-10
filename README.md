@@ -69,6 +69,8 @@ https://time-clock-service.herokuapp.com/api/employees/{id}
 
 #### Employee Time-in
 ###### Request Type: POST
+https://time-clock-service.herokuapp.com/api/timeIn
+
 Content-Type: application/json
 ```json
 {
@@ -76,5 +78,15 @@ Content-Type: application/json
 }
 ```
 
+#### Employee Time-out
+###### Request Type: POST
+https://time-clock-service.herokuapp.com/api/timeOut
+
+Content-Type: application/json
+```json
+{
+  "empId": "{employee id}"
+}
+```
 
 
