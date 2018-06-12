@@ -17,6 +17,20 @@ https://time-clock-service.herokuapp.com/api/companies
 ###### Request Type: GET
 https://time-clock-service.herokuapp.com/api/companies/search/findByName?name={companyName}
 
+#### To update company:
+###### Request Type: PUT or PATCH
+https://time-clock-service.herokuapp.com/api/companies/{id}
+
+Content-Type: application/json
+```json
+{
+  "name": "{company name}"
+}
+```
+
+#### To delete company:
+###### Request Type: DELETE
+https://time-clock-service.herokuapp.com/api/companies/{id}
 
 #### To create employee:
 ###### Request Type: POST
