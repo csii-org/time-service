@@ -89,4 +89,23 @@ Content-Type: application/json
 }
 ```
 
+### Who Is In
+###### Request Type: GET
+https://time-clock-service.herokuapp.com/api/whoIsIn
+
+Sample Response:
+```json
+{
+    "_embedded": {
+        "whoIsIns": [
+            {
+                "name": "{employee name}",
+                "status": "{IN | OUT}",
+                "date": "{current date}",
+                "time": "{timeIn | timeOut}"
+            }
+        ]
+    }
+}
+```
 
