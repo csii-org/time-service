@@ -9,6 +9,9 @@ import com.analyn.time.exception.NotFoundException;
 import com.analyn.time.exception.TimeInNotFoundException;
 import com.analyn.time.model.Employee;
 import com.analyn.time.model.EmployeeTime;
+import com.analyn.time.model.QEmployeeTime;
+import com.querydsl.core.types.Predicate;
+import com.querydsl.core.types.dsl.BooleanExpression;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.rest.webmvc.BasePathAwareController;
 import org.springframework.hateoas.Resources;
@@ -67,6 +70,25 @@ public class EmployeeTimeController {
 
         return ResponseEntity.ok(updateRecord);
 
+    }
+
+    @RequestMapping(method = RequestMethod.GET, value = "/employeeTimes/search/listView")
+    @ResponseBody
+    public ResponseEntity<Object> listView(EmployeeTimeDTO param) {
+        QEmployeeTime employeeTime = QEmployeeTime.employeeTime;
+        Predicate predicate = null;
+        if (param.getEmployeeName() != null) {
+            predicate = employeeTime.employee.fullName.containsIgnoreCase(param.getEmployeeName());
+        }
+        if (param.getDateFrom() != null && param.getDateTo() == null) {
+            Predicate timePredicate = employeeTime.timeIn.after(LocalDateTime.of(param.getDateFrom(), LocalTime.MIDNIGHT));
+            predicate = (predicate != null) ? ((BooleanExpression) predicate).and(timePredicate) : timePredicate;
+        } else if (param.getDateFrom() != null && param.getDateTo() != null) {
+            Predicate rangePredicate = employeeTime.timeIn.between(LocalDateTime.of(param.getDateFrom(), LocalTime.MIDNIGHT), LocalDateTime.of(param.getDateTo(), LocalTime.MAX));
+            predicate = (predicate != null) ? ((BooleanExpression) predicate).and(rangePredicate) : rangePredicate;
+        }
+        Iterable<EmployeeTime> result = repository.findAll(predicate);
+        return ResponseEntity.ok(result);
     }
 
 
@@ -128,6 +150,9 @@ public class EmployeeTimeController {
         } else if (workHours < REGULAR_WORK_HOURS) {
             time.setUndertime(REGULAR_WORK_HOURS - workHours);
             time.setOvertime(null);
+        } else {
+            time.setOvertime(null);
+            time.setUndertime(null);
         }
 
     }

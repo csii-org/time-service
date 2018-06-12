@@ -141,4 +141,8 @@ Note: Not all fields are required.
 ###### Request Type: DELETE
 https://time-clock-service.herokuapp.com/api/employeeTimes/{id} -> not employee id
 
+#### List View
+###### Request Type: GET
+https://time-clock-service.herokuapp.com/api/employeeTimes/search/listView{?employeeName,dateFrom,dateTo}
+
 
