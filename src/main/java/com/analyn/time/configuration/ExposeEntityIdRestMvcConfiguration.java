@@ -2,6 +2,7 @@ package com.analyn.time.configuration;
 
 import com.analyn.time.model.Company;
 import com.analyn.time.model.Employee;
+import com.analyn.time.model.EmployeeTime;
 import org.springframework.data.rest.core.config.RepositoryRestConfiguration;
 import org.springframework.data.rest.webmvc.config.RepositoryRestConfigurerAdapter;
 import org.springframework.stereotype.Component;
@@ -13,5 +14,6 @@ public class ExposeEntityIdRestMvcConfiguration extends RepositoryRestConfigurer
     public void configureRepositoryRestConfiguration(RepositoryRestConfiguration config) {
         config.exposeIdsFor(Company.class);
         config.exposeIdsFor(Employee.class);
+        config.exposeIdsFor(EmployeeTime.class);
     }
 }

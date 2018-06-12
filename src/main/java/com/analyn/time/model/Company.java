@@ -1,5 +1,6 @@
 package com.analyn.time.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -14,6 +15,7 @@ public class Company {
     private @Id @GeneratedValue int id;
     private String name;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "company")
     private List<Employee> employees;
 

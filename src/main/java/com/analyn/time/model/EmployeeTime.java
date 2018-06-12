@@ -12,9 +12,11 @@ public class EmployeeTime {
     private @Id @GeneratedValue int id;
     private LocalDateTime timeIn;
     private LocalDateTime timeOut;
+    private Double hoursWorked;
     private Double overtime;
     private Double undertime;
-    private Boolean isAbsent;
+    private Double absent;
+    private String notes;
     private LocalDateTime createdDate;
     private LocalDateTime updatedDate;
 
@@ -24,13 +26,15 @@ public class EmployeeTime {
 
     public EmployeeTime() {}
 
-    private EmployeeTime(int id, LocalDateTime timeIn, LocalDateTime timeOut, Double overtime, Double undertime, Boolean isAbsent, LocalDateTime createdDate, LocalDateTime updatedDate, Employee employee) {
+    private EmployeeTime(int id, LocalDateTime timeIn, LocalDateTime timeOut, Double hoursWorked, Double overtime, Double undertime, Double absent, String notes, LocalDateTime createdDate, LocalDateTime updatedDate, Employee employee) {
         this.id = id;
         this.timeIn = timeIn;
         this.timeOut = timeOut;
+        this.hoursWorked = hoursWorked;
         this.overtime = overtime;
         this.undertime = undertime;
-        this.isAbsent = isAbsent;
+        this.absent = absent;
+        this.notes = notes;
         this.createdDate = createdDate;
         this.updatedDate = updatedDate;
         this.employee = employee;

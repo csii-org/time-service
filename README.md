@@ -29,7 +29,7 @@ Content-Type: application/json
   "fullName": "{fullName}",
   "fingerprintId": "{fingerprintId}",
   "pin": "{pin}",
-  "createdDate": "{date}"
+  "company": "https://time-clock-service.herokuapp.com/api/companies/{id}"
 }
 ```
 
@@ -108,4 +108,23 @@ Sample Response:
     }
 }
 ```
+
+#### To update employee time record:
+###### Request Type: PATCH or PUT
+https://time-clock-service.herokuapp.com/api/employeeTimes/{id}
+
+Content-Type: application/json
+```json
+{
+  "timeIn": "{yyyy-MM-ddThh:mm:ss}",
+  "timeOut": "{yyyy-MM-ddThh:mm:ss}",
+  "notes": "{notes}"
+}
+```
+Note: Not all fields are required.
+
+#### To delete time record:
+###### Request Type: DELETE
+https://time-clock-service.herokuapp.com/api/employeeTimes/{id} -> not employee id
+
 

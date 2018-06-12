@@ -1,5 +1,6 @@
 package com.analyn.time.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -18,10 +19,11 @@ public class Employee {
     private String pin;
     private LocalDateTime createdDate = LocalDateTime.now();
 
-    @ManyToOne
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinColumn(name = "company_id")
     private Company company;
 
+    @JsonIgnore
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "employee")
     private List<EmployeeTime> employeeTimes;
 

@@ -5,6 +5,7 @@ import com.analyn.time.dao.EmployeeTimeRepository;
 import com.analyn.time.dto.EmployeeTimeDTO;
 import com.analyn.time.dto.WhoIsIn;
 import com.analyn.time.exception.EmployeeNotFoundException;
+import com.analyn.time.exception.NotFoundException;
 import com.analyn.time.exception.TimeInNotFoundException;
 import com.analyn.time.model.Employee;
 import com.analyn.time.model.EmployeeTime;
@@ -12,16 +13,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.rest.webmvc.BasePathAwareController;
 import org.springframework.hateoas.Resources;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -33,17 +32,46 @@ public class EmployeeTimeController {
 
     private final EmployeeRepository employeeRepository;
 
+    private static final double REGULAR_WORK_HOURS = 9;
+    private static final double LUNCH_BREAK = 1;
+
     @Autowired
     public EmployeeTimeController(EmployeeTimeRepository repository, EmployeeRepository employeeRepository) {
         this.repository = repository;
         this.employeeRepository = employeeRepository;
     }
 
+//    @RequestMapping(method = RequestMethod.POST, value = "/employeeTimes")
+//    @ResponseBody
+//    public ResponseEntity<Object> save(@RequestBody EmployeeTime record) {
+//
+//    }
+
+    @RequestMapping(method = {RequestMethod.PUT, RequestMethod.PATCH}, value = "/employeeTimes/{id}")
+    @ResponseBody
+    public ResponseEntity<Object> update(@PathVariable int id, @RequestBody EmployeeTimeDTO input) {
+        Optional<EmployeeTime> record = repository.findById(id);
+        if (!record.isPresent()) {
+            throw new NotFoundException("Record not found - id: " + id);
+        }
+        EmployeeTime updateRecord = record.get();
+        updateRecord.setNotes((input.getNotes() != null) ? input.getNotes() : updateRecord.getNotes());
+        updateRecord.setTimeIn((input.getTimeIn() != null) ? input.getTimeIn() : updateRecord.getTimeIn());
+        updateRecord.setTimeOut((input.getTimeOut() != null) ? input.getTimeOut() : updateRecord.getTimeOut());
+        updateRecord.setUpdatedDate(LocalDateTime.now());
+        if (updateRecord.getTimeOut() != null) {
+            computeHours(updateRecord);
+        }
+        repository.save(updateRecord);
+
+        return ResponseEntity.ok(updateRecord);
+
+    }
+
 
     @RequestMapping(method = RequestMethod.POST, value = "/timeIn")
     @ResponseBody
     public ResponseEntity<Object> timeIn(@RequestBody EmployeeTimeDTO body) {
-    //public String timeIn(@RequestBody EmployeeTimeDTO body) {
         Optional<Employee> employee = employeeRepository.findById(body.getEmpId());
         if (!employee.isPresent()) {
             throw new EmployeeNotFoundException("Employee ID not found: " + body.getEmpId());
@@ -83,9 +111,24 @@ public class EmployeeTimeController {
         LocalDateTime now = LocalDateTime.now();
         timeOut.setTimeOut(now);
         timeOut.setUpdatedDate(now);
+        computeHours(timeOut);
         repository.save(timeOut);
 
         return ResponseEntity.ok().build();
+    }
+
+    private void computeHours(EmployeeTime time) {
+        Long workMinutes = ChronoUnit.MINUTES.between(time.getTimeIn(), time.getTimeOut());
+        Double workHours = workMinutes.doubleValue() / 60;
+        time.setHoursWorked(workHours - LUNCH_BREAK);
+        if (workHours > REGULAR_WORK_HOURS) {
+            time.setOvertime(workHours - REGULAR_WORK_HOURS);
+            time.setUndertime(null);
+        } else if (workHours < REGULAR_WORK_HOURS) {
+            time.setUndertime(REGULAR_WORK_HOURS - workHours);
+            time.setOvertime(null);
+        }
+
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "/whoIsIn")

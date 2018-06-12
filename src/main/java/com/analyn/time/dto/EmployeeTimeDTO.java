@@ -2,28 +2,31 @@ package com.analyn.time.dto;
 
 import lombok.Data;
 
-import java.time.Instant;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.ZoneId;
 
 @Data
 public class EmployeeTimeDTO {
     private int empId;
-    private long time;
+    private LocalDateTime timeIn;
+    private LocalDateTime timeOut;
+    private Double hoursWorked;
+    private Double overtime;
+    private Double undertime;
+    private Double absent;
+    private String notes;
 
-    public EmployeeTimeDTO() {}
+    public EmployeeTimeDTO() {
+    }
 
-    public EmployeeTimeDTO(int empId, long time) {
+    public EmployeeTimeDTO(int empId, LocalDateTime timeIn, LocalDateTime timeOut, Double hoursWorked, Double overtime, Double undertime, Double absent, String notes) {
         this.empId = empId;
-        this.time = time;
+        this.timeIn = timeIn;
+        this.timeOut = timeOut;
+        this.hoursWorked = hoursWorked;
+        this.overtime = overtime;
+        this.undertime = undertime;
+        this.absent = absent;
+        this.notes = notes;
     }
 
-    public LocalDate getConvertedDate() {
-        return Instant.ofEpochSecond(time).atZone(ZoneId.systemDefault()).toLocalDate();
-    }
-
-    public LocalDateTime getConvertedDateTime() {
-        return Instant.ofEpochSecond(time).atZone(ZoneId.systemDefault()).toLocalDateTime();
-    }
 }
