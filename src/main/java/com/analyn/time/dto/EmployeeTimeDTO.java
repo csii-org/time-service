@@ -5,6 +5,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Data
 public class EmployeeTimeDTO {
@@ -22,8 +23,9 @@ public class EmployeeTimeDTO {
     private LocalDate dateFrom;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate dateTo;
+    private List<Integer> employeeList;
 
-    public EmployeeTimeDTO(int empId, LocalDateTime timeIn, LocalDateTime timeOut, Double hoursWorked, Double overtime, Double undertime, Double absent, String notes, String employeeName, String leaveType, LocalDate dateFrom, LocalDate dateTo) {
+    public EmployeeTimeDTO(int empId, LocalDateTime timeIn, LocalDateTime timeOut, Double hoursWorked, Double overtime, Double undertime, Double absent, String notes, String employeeName, String leaveType, LocalDate dateFrom, LocalDate dateTo, List<Integer> employeeList) {
         this.empId = empId;
         this.timeIn = timeIn;
         this.timeOut = timeOut;
@@ -36,6 +38,7 @@ public class EmployeeTimeDTO {
         this.leaveType = leaveType;
         this.dateFrom = dateFrom;
         this.dateTo = dateTo;
+        this.employeeList = employeeList;
     }
 
     public EmployeeTimeDTO() {

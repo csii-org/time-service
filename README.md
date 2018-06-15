@@ -145,4 +145,18 @@ https://time-clock-service.herokuapp.com/api/employeeTimes/{id} -> not employee 
 ###### Request Type: GET
 https://time-clock-service.herokuapp.com/api/employeeTimes/search/listView{?employeeName,dateFrom,dateTo,leaveType}
 
+#### List View - Add Entry
+###### Request Type: POST
+https://time-clock-service.herokuapp.com/api/employeeTimes/addEntry
+
+Content-Type: application/json
+```json
+{
+	"employeeList": [{employeeId}, {employeeId}],
+	"timeIn": "{yyyy-MM-ddThh:mm:ss}",
+	"timeOut": "{yyyy-MM-ddThh:mm:ss}",
+	"notes": "{notes}"
+}
+```
+Note: There should be no timeOut if the employee is still working.
 

@@ -15,6 +15,7 @@ import com.querydsl.core.types.dsl.BooleanExpression;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.rest.webmvc.BasePathAwareController;
 import org.springframework.hateoas.Resources;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
@@ -45,11 +46,31 @@ public class EmployeeTimeController {
         this.employeeRepository = employeeRepository;
     }
 
-//    @RequestMapping(method = RequestMethod.POST, value = "/employeeTimes")
-//    @ResponseBody
-//    public ResponseEntity<Object> save(@RequestBody EmployeeTime record) {
-//
-//    }
+    @RequestMapping(method = RequestMethod.POST, value = "/employeeTimes/addEntry")
+    @ResponseBody
+    public ResponseEntity<Object> addEntry(@RequestBody EmployeeTimeDTO input) {
+        List<Integer> empIdList = input.getEmployeeList();
+        List<EmployeeTime> records = new ArrayList<>();
+        final LocalDateTime NOW = LocalDateTime.now();
+        for (Integer empId : empIdList) {
+            Optional<Employee> employee = employeeRepository.findById(empId);
+            EmployeeTime record = new EmployeeTime();
+            record.setEmployee(employee.get());
+            record.setTimeIn(input.getTimeIn());
+            LocalDateTime timeOut = input.getTimeOut();
+            if (timeOut != null) {
+                record.setTimeOut(timeOut);
+                computeHours(record);
+            }
+            record.setNotes(input.getNotes());
+            record.setCreatedDate(NOW);
+            record.setUpdatedDate(NOW);
+            records.add(record);
+        }
+        repository.saveAll(records);
+        //return ResponseEntity.ok(input);
+        return ResponseEntity.status(HttpStatus.CREATED).build();
+    }
 
     @RequestMapping(method = {RequestMethod.PUT, RequestMethod.PATCH}, value = "/employeeTimes/{id}")
     @ResponseBody
