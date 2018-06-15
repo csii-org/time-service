@@ -1,7 +1,7 @@
 package com.analyn.time.dao;
 
 import com.analyn.time.model.Employee;
-import com.analyn.time.projection.InlineCompany;
+import com.analyn.time.model.InlineCompany;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
