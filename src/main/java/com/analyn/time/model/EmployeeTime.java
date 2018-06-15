@@ -16,6 +16,7 @@ public class EmployeeTime {
     private Double overtime;
     private Double undertime;
     private Double absent;
+    private String leaveType;
     private String notes;
     private LocalDateTime createdDate;
     private LocalDateTime updatedDate;
@@ -26,7 +27,7 @@ public class EmployeeTime {
 
     public EmployeeTime() {}
 
-    private EmployeeTime(int id, LocalDateTime timeIn, LocalDateTime timeOut, Double hoursWorked, Double overtime, Double undertime, Double absent, String notes, LocalDateTime createdDate, LocalDateTime updatedDate, Employee employee) {
+    private EmployeeTime(int id, LocalDateTime timeIn, LocalDateTime timeOut, Double hoursWorked, Double overtime, Double undertime, Double absent, String leaveType, String notes, LocalDateTime createdDate, LocalDateTime updatedDate, Employee employee) {
         this.id = id;
         this.timeIn = timeIn;
         this.timeOut = timeOut;
@@ -34,6 +35,7 @@ public class EmployeeTime {
         this.overtime = overtime;
         this.undertime = undertime;
         this.absent = absent;
+        this.leaveType = leaveType;
         this.notes = notes;
         this.createdDate = createdDate;
         this.updatedDate = updatedDate;

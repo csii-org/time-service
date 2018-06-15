@@ -17,12 +17,13 @@ public class EmployeeTimeDTO {
     private Double absent;
     private String notes;
     private String employeeName;
+    private String leaveType;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate dateFrom;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate dateTo;
 
-    public EmployeeTimeDTO(int empId, LocalDateTime timeIn, LocalDateTime timeOut, Double hoursWorked, Double overtime, Double undertime, Double absent, String notes, String employeeName, LocalDate dateFrom, LocalDate dateTo) {
+    public EmployeeTimeDTO(int empId, LocalDateTime timeIn, LocalDateTime timeOut, Double hoursWorked, Double overtime, Double undertime, Double absent, String notes, String employeeName, String leaveType, LocalDate dateFrom, LocalDate dateTo) {
         this.empId = empId;
         this.timeIn = timeIn;
         this.timeOut = timeOut;
@@ -32,6 +33,7 @@ public class EmployeeTimeDTO {
         this.absent = absent;
         this.notes = notes;
         this.employeeName = employeeName;
+        this.leaveType = leaveType;
         this.dateFrom = dateFrom;
         this.dateTo = dateTo;
     }

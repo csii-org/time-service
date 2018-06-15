@@ -143,6 +143,6 @@ https://time-clock-service.herokuapp.com/api/employeeTimes/{id} -> not employee 
 
 #### List View
 ###### Request Type: GET
-https://time-clock-service.herokuapp.com/api/employeeTimes/search/listView{?employeeName,dateFrom,dateTo}
+https://time-clock-service.herokuapp.com/api/employeeTimes/search/listView{?employeeName,dateFrom,dateTo,leaveType}
 
 
