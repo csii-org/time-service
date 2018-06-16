@@ -160,3 +160,19 @@ Content-Type: application/json
 ```
 Note: There should be no timeOut if the employee is still working.
 
+#### List View - Add Absence
+###### Request Type: POST
+https://time-clock-service.herokuapp.com/api/employeeTimes/addAbsence
+
+Content-Type: application/json
+```json
+{
+	"employeeList": [{employeeId}, {employeeId}],
+	"dateFrom": "{yyyy-MM-dd}",
+	"dateTo": "{yyyy-MM-dd}",
+	"absent": {absentHours},
+	"leaveType": "{type of leave}",
+	"notes": "{notes}"
+}
+```
+Note: All fields are required except notes.

@@ -21,13 +21,12 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
+import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.temporal.ChronoUnit;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 @CrossOrigin
 @BasePathAwareController
@@ -39,6 +38,7 @@ public class EmployeeTimeController {
 
     private static final double REGULAR_WORK_HOURS = 9;
     private static final double LUNCH_BREAK = 1;
+    private static final Set<DayOfWeek> WEEKEND = EnumSet.of(DayOfWeek.SATURDAY, DayOfWeek.SUNDAY);
 
     @Autowired
     public EmployeeTimeController(EmployeeTimeRepository repository, EmployeeRepository employeeRepository) {
@@ -68,7 +68,37 @@ public class EmployeeTimeController {
             records.add(record);
         }
         repository.saveAll(records);
-        //return ResponseEntity.ok(input);
+        return ResponseEntity.status(HttpStatus.CREATED).build();
+    }
+
+    @RequestMapping(method = RequestMethod.POST, value = "/employeeTimes/addAbsence")
+    @ResponseBody
+    public ResponseEntity<Object> addAbsence(@RequestBody EmployeeTimeDTO input) {
+        List<Integer> empIdList = input.getEmployeeList();
+        List<EmployeeTime> records = new ArrayList<>();
+        for (Integer empId : empIdList) {
+            Optional<Employee> employee = employeeRepository.findById(empId);
+
+            LocalDate startDate = input.getDateFrom();
+            LocalDate endDate = input.getDateTo();
+            for (LocalDate date = startDate; date.isBefore(endDate) || date.isEqual(endDate); date = date.plusDays(1)) {
+                if (WEEKEND.contains(date.getDayOfWeek())) {
+                    continue;
+                }
+                EmployeeTime record = new EmployeeTime();
+                record.setEmployee(employee.get());
+                LocalDateTime absentDate = LocalDateTime.of(date, LocalTime.MIN);
+                record.setTimeIn(absentDate);
+                record.setTimeOut(absentDate);
+                record.setAbsent(input.getAbsent());
+                record.setLeaveType(input.getLeaveType());
+                record.setNotes(input.getNotes());
+                record.setCreatedDate(LocalDateTime.now());
+                record.setUpdatedDate(LocalDateTime.now());
+                records.add(record);
+            }
+        }
+        repository.saveAll(records);
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 
