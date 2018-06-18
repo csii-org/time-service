@@ -20,6 +20,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.net.URI;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
@@ -198,18 +200,22 @@ public class EmployeeTimeController {
     private void computeHours(EmployeeTime time) {
         Long workMinutes = ChronoUnit.MINUTES.between(time.getTimeIn(), time.getTimeOut());
         Double workHours = workMinutes.doubleValue() / 60;
-        time.setHoursWorked(workHours - LUNCH_BREAK);
+        time.setHoursWorked(roundOff(workHours - LUNCH_BREAK));
         if (workHours > REGULAR_WORK_HOURS) {
-            time.setOvertime(workHours - REGULAR_WORK_HOURS);
+            time.setOvertime(roundOff(workHours - REGULAR_WORK_HOURS));
             time.setUndertime(null);
         } else if (workHours < REGULAR_WORK_HOURS) {
-            time.setUndertime(REGULAR_WORK_HOURS - workHours);
+            time.setUndertime(roundOff(REGULAR_WORK_HOURS - workHours));
             time.setOvertime(null);
         } else {
             time.setOvertime(null);
             time.setUndertime(null);
         }
 
+    }
+
+    private Double roundOff(Double value) {
+        return new BigDecimal(value).setScale(2, RoundingMode.HALF_UP).doubleValue();
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "/whoIsIn")
