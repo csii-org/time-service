@@ -140,7 +140,7 @@ public class EmployeeTimeController {
             Predicate rangePredicate = employeeTime.timeIn.between(LocalDateTime.of(param.getDateFrom(), LocalTime.MIDNIGHT), LocalDateTime.of(param.getDateTo(), LocalTime.MAX));
             predicate = (predicate != null) ? ((BooleanExpression) predicate).and(rangePredicate) : rangePredicate;
         }
-        if (param.getLeaveType() != null) {
+        if (param.getLeaveType() != null && !param.getLeaveType().trim().isEmpty()) {
             Predicate leavePredicate = employeeTime.leaveType.containsIgnoreCase(param.getLeaveType());
             predicate = (predicate != null) ? ((BooleanExpression) predicate).and(leavePredicate) : leavePredicate;
         }
