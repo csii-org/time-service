@@ -176,3 +176,14 @@ Content-Type: application/json
 }
 ```
 Note: All fields are required except notes.
+
+#### Admin credentials
+```
+    Company: Cañete Structural Investigation Inc.
+    Username: csi_admin
+    Password: adminp@sswordcsi1
+
+    Company: CCM Network Manpower Solutions Inc.
+    Username: ccm_admin
+    Password: adminp@sswordccm2
+```
