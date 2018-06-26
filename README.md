@@ -186,4 +186,8 @@ Note: All fields are required except notes.
     Company: CCM Network Manpower Solutions Inc.
     Username: ccm_admin
     Password: adminp@sswordccm2
+    
+    Biometrics Device Admin
+    Username: device_admin
+    Password: adminp@sswordbio3
 ```
