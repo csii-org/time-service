@@ -52897,7 +52897,7 @@ var CompanyActions = {
 
 module.exports = CompanyActions;
 
-},{"../constants/actionTypes":243,"../constants/apis":244,"../dispatcher/appDispatcher":247,"../stores/companyStore":250,"toastr":208}],210:[function(require,module,exports){
+},{"../constants/actionTypes":243,"../constants/apis":244,"../dispatcher/appDispatcher":248,"../stores/companyStore":251,"toastr":208}],210:[function(require,module,exports){
 "use strict";
 
 var Dispatcher = require('../dispatcher/appDispatcher');
@@ -52988,7 +52988,7 @@ var EmployeeActions = {
 
 module.exports = EmployeeActions;
 
-},{"../api/employeeApi":215,"../constants/actionTypes":243,"../constants/apis":244,"../dispatcher/appDispatcher":247,"toastr":208}],211:[function(require,module,exports){
+},{"../api/employeeApi":215,"../constants/actionTypes":243,"../constants/apis":244,"../dispatcher/appDispatcher":248,"toastr":208}],211:[function(require,module,exports){
 "use strict";
 
 var Dispatcher = require('../dispatcher/appDispatcher');
@@ -53007,7 +53007,7 @@ var InitializeActions = {
 
 module.exports = InitializeActions;
 
-},{"../actions/companyActions":209,"../actions/employeeActions":210,"../actions/listViewActions":212,"../actions/whoIsInActions":214,"../constants/actionTypes":243,"../dispatcher/appDispatcher":247,"moment":10}],212:[function(require,module,exports){
+},{"../actions/companyActions":209,"../actions/employeeActions":210,"../actions/listViewActions":212,"../actions/whoIsInActions":214,"../constants/actionTypes":243,"../dispatcher/appDispatcher":248,"moment":10}],212:[function(require,module,exports){
 "use strict";
 
 var Dispatcher = require('../dispatcher/appDispatcher');
@@ -53105,7 +53105,7 @@ var ListViewActions = {
 
 module.exports = ListViewActions;
 
-},{"../constants/actionTypes":243,"../constants/apis":244,"../dispatcher/appDispatcher":247,"toastr":208}],213:[function(require,module,exports){
+},{"../constants/actionTypes":243,"../constants/apis":244,"../dispatcher/appDispatcher":248,"toastr":208}],213:[function(require,module,exports){
 "use strict";
 
 var API = require('../constants/apis');
@@ -53157,7 +53157,7 @@ var LoginActions = {
 
 module.exports = LoginActions;
 
-},{"../constants/actionTypes":243,"../constants/apis":244,"../dispatcher/appDispatcher":247,"toastr":208}],214:[function(require,module,exports){
+},{"../constants/actionTypes":243,"../constants/apis":244,"../dispatcher/appDispatcher":248,"toastr":208}],214:[function(require,module,exports){
 "use strict";
 
 var API = require('../constants/apis').getApi();
@@ -53186,7 +53186,7 @@ var WhoIsInActions = {
 
 module.exports = WhoIsInActions;
 
-},{"../constants/actionTypes":243,"../constants/apis":244,"../dispatcher/appDispatcher":247,"toastr":208}],215:[function(require,module,exports){
+},{"../constants/actionTypes":243,"../constants/apis":244,"../dispatcher/appDispatcher":248,"toastr":208}],215:[function(require,module,exports){
 "use strict";
 var $ = require('jquery');
 var _ = require('lodash');
@@ -53378,7 +53378,7 @@ var Header = React.createClass({displayName: "Header",
 });
 
 module.exports = Header;
-},{"../../actions/loginActions":213,"../../stores/loginStore":253,"react":207,"react-router":37}],220:[function(require,module,exports){
+},{"../../actions/loginActions":213,"../../stores/loginStore":254,"react":207,"react-router":37}],220:[function(require,module,exports){
 'use strict';
 var React = require('react');
 
@@ -54024,7 +54024,7 @@ var CompanyPage = React.createClass({displayName: "CompanyPage",
 
 module.exports = CompanyPage;
 
-},{"../../actions/companyActions":209,"../../stores/companyStore":250,"../common/clockLoader":218,"../common/paginator":220,"../common/textInput":223,"./companyList":226,"react":207,"react-router":37}],228:[function(require,module,exports){
+},{"../../actions/companyActions":209,"../../stores/companyStore":251,"../common/clockLoader":218,"../common/paginator":220,"../common/textInput":223,"./companyList":226,"react":207,"react-router":37}],228:[function(require,module,exports){
 "use strict";
 
 var React = require('react');
@@ -54114,7 +54114,7 @@ var ManageCompanyPage = React.createClass({displayName: "ManageCompanyPage",
 
 module.exports = ManageCompanyPage;
 
-},{"../../actions/companyActions":209,"../../stores/companyStore":250,"./companyForm":225,"react":207,"react-router":37}],229:[function(require,module,exports){
+},{"../../actions/companyActions":209,"../../stores/companyStore":251,"./companyForm":225,"react":207,"react-router":37}],229:[function(require,module,exports){
 "use strict";
 
 var React = require('react');
@@ -54470,7 +54470,7 @@ var EmployeePage = React.createClass({displayName: "EmployeePage",
 
 module.exports = EmployeePage;
 
-},{"../../actions/employeeActions":210,"../../stores/employeeStore":251,"../common/paginator":220,"../common/textInput":223,"./employeeList":231,"react":207,"react-router":37}],233:[function(require,module,exports){
+},{"../../actions/employeeActions":210,"../../stores/employeeStore":252,"../common/paginator":220,"../common/textInput":223,"./employeeList":231,"react":207,"react-router":37}],233:[function(require,module,exports){
 "use strict";
 
 var React = require('react');
@@ -54595,7 +54595,7 @@ var ManageEmployeePage = React.createClass({displayName: "ManageEmployeePage",
 
 module.exports = ManageEmployeePage;
 
-},{"../../actions/employeeActions":210,"../../stores/companyStore":250,"../../stores/employeeStore":251,"./employeeForm":230,"react":207,"react-router":37}],234:[function(require,module,exports){
+},{"../../actions/employeeActions":210,"../../stores/companyStore":251,"../../stores/employeeStore":252,"./employeeForm":230,"react":207,"react-router":37}],234:[function(require,module,exports){
 "use strict";
 
 var React = require('react');
@@ -54961,7 +54961,7 @@ var ListViewPage = React.createClass({displayName: "ListViewPage",
 
 module.exports = ListViewPage;
 
-},{"../../actions/listViewActions":212,"../../stores/listViewStore":252,"../common/paginator":220,"../common/selectInput":222,"../common/textInput":223,"./listViewList":235,"moment":10,"react":207,"react-router":37}],237:[function(require,module,exports){
+},{"../../actions/listViewActions":212,"../../stores/listViewStore":253,"../common/paginator":220,"../common/selectInput":222,"../common/textInput":223,"./listViewList":235,"moment":10,"react":207,"react-router":37}],237:[function(require,module,exports){
 "use strict";
 
 var React = require('react');
@@ -55160,7 +55160,7 @@ var ManageListView = React.createClass({displayName: "ManageListView",
 
 module.exports = ManageListView;
 
-},{"../../actions/listViewActions":212,"../../stores/employeeStore":251,"../../stores/listViewStore":252,"../employees/employeeChecklist":229,"./listViewForm":234,"moment":10,"react":207,"react-router":37}],238:[function(require,module,exports){
+},{"../../actions/listViewActions":212,"../../stores/employeeStore":252,"../../stores/listViewStore":253,"../employees/employeeChecklist":229,"./listViewForm":234,"moment":10,"react":207,"react-router":37}],238:[function(require,module,exports){
 "use strict";
 
 var React = require('react');
@@ -55325,7 +55325,7 @@ var ManageLoginPage = React.createClass({displayName: "ManageLoginPage",
 
 module.exports = ManageLoginPage;
 
-},{"../../actions/loginActions":213,"../../stores/loginStore":253,"./loginForm":238,"react":207,"react-router":37}],240:[function(require,module,exports){
+},{"../../actions/loginActions":213,"../../stores/loginStore":254,"./loginForm":238,"react":207,"react-router":37}],240:[function(require,module,exports){
 "use strict";
 
 var React = require('react');
@@ -55479,7 +55479,7 @@ var WhoIsInPage = React.createClass({displayName: "WhoIsInPage",
 
 module.exports = WhoIsInPage;
 
-},{"../../actions/whoIsInActions":214,"../../stores/whoIsInStore":254,"../common/paginator":220,"./whoIsInList":241,"react":207,"react-router":37}],243:[function(require,module,exports){
+},{"../../actions/whoIsInActions":214,"../../stores/whoIsInStore":255,"../common/paginator":220,"./whoIsInList":241,"react":207,"react-router":37}],243:[function(require,module,exports){
 "use strict";
 
 var keyMirror = require('react/lib/keyMirror');
@@ -55510,29 +55510,30 @@ module.exports = keyMirror({
 });
 
 },{"react/lib/keyMirror":192}],244:[function(require,module,exports){
-(function (process){
 'use strict';
-(function () {
-    module.exports = {
-        getApi: function () {
-            switch (process.env.NODE_ENV) {
-                case 'developement':
-                case 'DEVELOPMENT':
-                case 'dev':
-                case 'DEV':
-                    return require("./devApi");
-                case 'production':
-                case 'PRODUCTION':
-                case 'prod':
-                case 'PROD':
-                    return require("./prodApis");
-            }
+var config = require('./config.json');
+module.exports = {
+    getApi: function () {
+        console.log('getApi', config);
+        switch (config.env.NODE_ENV) {
+            case 'production':
+            case 'PRODUCTION':
+            case 'prod':
+            case 'PROD':
+                return require("./prodApis");
+            case 'developement':
+            case 'DEVELOPMENT':
+            case 'dev':
+            case 'DEV':
+            default:
+                return require("./devApi");
         }
-    };
-})();
+    }
+};
 
-}).call(this,require('_process'))
-},{"./devApi":245,"./prodApis":246,"_process":12}],245:[function(require,module,exports){
+},{"./config.json":245,"./devApi":246,"./prodApis":247}],245:[function(require,module,exports){
+module.exports={"env":{"NODE_ENV":"prod"}}
+},{}],246:[function(require,module,exports){
 'use strict';
 
 var API = {
@@ -55619,7 +55620,7 @@ var API = {
 
 module.exports = API;
 
-},{}],246:[function(require,module,exports){
+},{}],247:[function(require,module,exports){
 'use strict';
 
 var API = {
@@ -55701,7 +55702,7 @@ var API = {
 
 module.exports = API;
 
-},{}],247:[function(require,module,exports){
+},{}],248:[function(require,module,exports){
 /*
  * Copyright (c) 2015, Facebook, Inc.
  * All rights reserved.
@@ -55719,7 +55720,7 @@ var Dispatcher = require('flux').Dispatcher;
 
 module.exports = new Dispatcher();
 
-},{"flux":5}],248:[function(require,module,exports){
+},{"flux":5}],249:[function(require,module,exports){
 "use strict";
 
 var React = require('react');
@@ -55732,7 +55733,7 @@ var InitializeActions = require('./actions/initializeActions');
 Router.run(routes, function(Handler) {
 	React.render(React.createElement(Handler, null), document.getElementById('app'));
 });
-},{"./actions/initializeActions":211,"./routes":249,"react":207,"react-router":37}],249:[function(require,module,exports){
+},{"./actions/initializeActions":211,"./routes":250,"react":207,"react-router":37}],250:[function(require,module,exports){
 "use strict";
 
 var React = require('react');
@@ -55777,7 +55778,7 @@ var routes = (
 
 module.exports = routes;
 
-},{"./components/app":216,"./components/company/companyPage":227,"./components/company/manageCompanyPage":228,"./components/employees/employeePage":232,"./components/employees/manageEmployeePage":233,"./components/listView/listViewPage":236,"./components/listView/manageListView":237,"./components/login/loginPage":239,"./components/notFoundPage":240,"./components/whoIsIn/whoIsInPage":242,"react":207,"react-router":37}],250:[function(require,module,exports){
+},{"./components/app":216,"./components/company/companyPage":227,"./components/company/manageCompanyPage":228,"./components/employees/employeePage":232,"./components/employees/manageEmployeePage":233,"./components/listView/listViewPage":236,"./components/listView/manageListView":237,"./components/login/loginPage":239,"./components/notFoundPage":240,"./components/whoIsIn/whoIsInPage":242,"react":207,"react-router":37}],251:[function(require,module,exports){
 "use strict";
 
 var Dispatcher = require('../dispatcher/appDispatcher');
@@ -55881,7 +55882,7 @@ Dispatcher.register(function (action) {
 
 module.exports = CompanyStore;
 
-},{"../constants/actionTypes":243,"../dispatcher/appDispatcher":247,"events":2,"lodash":9,"object-assign":11,"toastr":208}],251:[function(require,module,exports){
+},{"../constants/actionTypes":243,"../dispatcher/appDispatcher":248,"events":2,"lodash":9,"object-assign":11,"toastr":208}],252:[function(require,module,exports){
 "use strict";
 
 var Dispatcher = require('../dispatcher/appDispatcher');
@@ -55975,7 +55976,7 @@ Dispatcher.register(function (action) {
 
 module.exports = EmployeeStore;
 
-},{"../constants/actionTypes":243,"../dispatcher/appDispatcher":247,"events":2,"lodash":9,"object-assign":11,"toastr":208}],252:[function(require,module,exports){
+},{"../constants/actionTypes":243,"../dispatcher/appDispatcher":248,"events":2,"lodash":9,"object-assign":11,"toastr":208}],253:[function(require,module,exports){
 "use strict";
 
 var Dispatcher = require('../dispatcher/appDispatcher');
@@ -56064,7 +56065,7 @@ Dispatcher.register(function (action) {
 
 module.exports = ListViewStore;
 
-},{"../constants/actionTypes":243,"../dispatcher/appDispatcher":247,"events":2,"lodash":9,"object-assign":11}],253:[function(require,module,exports){
+},{"../constants/actionTypes":243,"../dispatcher/appDispatcher":248,"events":2,"lodash":9,"object-assign":11}],254:[function(require,module,exports){
 "use strict";
 
 var Dispatcher = require('../dispatcher/appDispatcher');
@@ -56113,7 +56114,7 @@ Dispatcher.register(function (action) {
 
 module.exports = LoginStore;
 
-},{"../constants/actionTypes":243,"../dispatcher/appDispatcher":247,"events":2,"lodash":9,"object-assign":11}],254:[function(require,module,exports){
+},{"../constants/actionTypes":243,"../dispatcher/appDispatcher":248,"events":2,"lodash":9,"object-assign":11}],255:[function(require,module,exports){
 "use strict";
 
 var Dispatcher = require('../dispatcher/appDispatcher');
@@ -56172,4 +56173,4 @@ Dispatcher.register(function (action) {
 
 module.exports = WhoIsInStore;
 
-},{"../constants/actionTypes":243,"../dispatcher/appDispatcher":247,"events":2,"lodash":9,"object-assign":11}]},{},[248]);
+},{"../constants/actionTypes":243,"../dispatcher/appDispatcher":248,"events":2,"lodash":9,"object-assign":11}]},{},[249]);
