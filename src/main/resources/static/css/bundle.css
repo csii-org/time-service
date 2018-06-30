@@ -225,8 +225,25 @@ th .checkbox,
 td .checkbox {
     margin: 0;
 }
+td.employee-in {
+    color:#24be8d;
+    font-weight: 700;
+}
+td.employee-out {
+    color: #f27474;
+    font-weight: 700;
+}
 th.checkbox-column {
     width: 36px;
+}
+
+.table>tbody>tr>td, 
+.table>tbody>tr>th, 
+.table>tfoot>tr>td, 
+.table>tfoot>tr>th, 
+.table>thead>tr>td, 
+.table>thead>tr>th {
+    vertical-align: middle;
 }
 
 .input-group.field .glyphicon {
@@ -243,7 +260,6 @@ th.checkbox-column {
     margin-top: 24px;
     margin-left: 10px;
 }
-
 h1 {
     margin-bottom: 30px;
 }
@@ -253,14 +269,30 @@ h1 {
 }
 
 th.action {
-    width: 120px;
+    width: 90px;
 }
 
 td.action a {
     padding: 0 5px;
 }
+
+td.action .action-button {
+    padding: 3px 6px 0px;
+    /* min-width: 52px; */
+    display: inline-block;
+    font-size: 12px;
+    margin: 5px;
+}
+
+td.action .action-button:hover {
+    color: #1e86e3;
+}
+td.action .action-button.delete-btn:hover {
+    color: #f27474;
+}
+
 .input.error {
-    color: #a94442;
+    color: #f27474;
 }
 
 input.form-control.flatpickr-input {
@@ -318,6 +350,34 @@ html, body {
   /* left: calc(50% - 3px); */
   background: #333;
   border-radius: 5px;
+}
+
+.inline-wrap {
+    display: inline-block;
+}
+
+.inline-wrap .clock {
+    display: inline-block;
+    margin: 0;
+    width: 30px;
+    height: 30px;
+    margin-left: 10px;
+}
+
+.inline-wrap .clock .minutes,
+.inline-wrap .clock .hours {
+    width: 25px;
+    top: 11px;
+}
+
+.inline-wrap .clock .minutes:before {
+    width: 12px;
+    left: 2px;
+}
+
+.inline-wrap .clock .hours:before {
+    width: 7px;
+    left: 6px;
 }
 
 @-webkit-keyframes you-spin-me-round-round-baby-right-round {
