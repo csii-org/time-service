@@ -143,6 +143,9 @@ public class EmployeeTimeController {
         if (param.getLeaveType() != null && !param.getLeaveType().trim().isEmpty()) {
             Predicate leavePredicate = employeeTime.leaveType.containsIgnoreCase(param.getLeaveType());
             predicate = (predicate != null) ? ((BooleanExpression) predicate).and(leavePredicate) : leavePredicate;
+        } else if (param.getLeaveType() == null || param.getLeaveType().trim().isEmpty()) {
+            Predicate leavePredicate = employeeTime.leaveType.isNull();
+            predicate = (predicate != null) ? ((BooleanExpression) predicate).and(leavePredicate) : leavePredicate;
         }
         Iterable<EmployeeTime> result = repository.findAll(predicate);
         return ResponseEntity.ok(result);
