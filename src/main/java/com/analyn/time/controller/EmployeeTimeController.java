@@ -159,11 +159,15 @@ public class EmployeeTimeController {
         if (!employee.isPresent()) {
             throw new EmployeeNotFoundException("Employee ID not found: " + body.getEmpId());
         }
-        EmployeeTime newTime = new EmployeeTime();
         LocalDateTime now = LocalDateTime.now();
+        LocalDateTime timeIn = body.getInput();
+        if (null == timeIn) {
+            timeIn = now;
+        }
+        EmployeeTime newTime = new EmployeeTime();
         newTime.setEmployee(employee.get());
         newTime.setCreatedDate(now);
-        newTime.setTimeIn(now);
+        newTime.setTimeIn(timeIn);
         newTime.setUpdatedDate(now);
         EmployeeTime created = repository.save(newTime);
 
@@ -192,7 +196,11 @@ public class EmployeeTimeController {
 
         EmployeeTime timeOut = result.get(0);
         LocalDateTime now = LocalDateTime.now();
-        timeOut.setTimeOut(now);
+        LocalDateTime timeOutHrs = body.getInput();
+        if (null == timeOutHrs) {
+            timeOutHrs = now;
+        }
+        timeOut.setTimeOut(timeOutHrs);
         timeOut.setUpdatedDate(now);
         computeHours(timeOut);
         repository.save(timeOut);

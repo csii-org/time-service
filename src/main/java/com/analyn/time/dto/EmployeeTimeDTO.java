@@ -24,8 +24,11 @@ public class EmployeeTimeDTO {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate dateTo;
     private List<Integer> employeeList;
+    private LocalDateTime input;
 
-    public EmployeeTimeDTO(int empId, LocalDateTime timeIn, LocalDateTime timeOut, Double hoursWorked, Double overtime, Double undertime, Double absent, String notes, String employeeName, String leaveType, LocalDate dateFrom, LocalDate dateTo, List<Integer> employeeList) {
+    public EmployeeTimeDTO(int empId, LocalDateTime timeIn, LocalDateTime timeOut, Double hoursWorked, Double overtime,
+                           Double undertime, Double absent, String notes, String employeeName, String leaveType,
+                           LocalDate dateFrom, LocalDate dateTo, List<Integer> employeeList, LocalDateTime input) {
         this.empId = empId;
         this.timeIn = timeIn;
         this.timeOut = timeOut;
@@ -39,6 +42,7 @@ public class EmployeeTimeDTO {
         this.dateFrom = dateFrom;
         this.dateTo = dateTo;
         this.employeeList = employeeList;
+        this.input = input;
     }
 
     public EmployeeTimeDTO() {
